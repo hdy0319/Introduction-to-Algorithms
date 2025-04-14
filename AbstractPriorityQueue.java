@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public abstract class AbstractPriorityQueue<K, V> {
     protected Comparator<K> comp;
 

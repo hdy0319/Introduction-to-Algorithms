@@ -1,3 +1,7 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Comparator;
+
 public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
     protected ArrayList<Entry<K, V>> heap = new ArrayList<>();
     public HeapPriorityQueue() { super(); }
@@ -69,4 +73,13 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         heap.add(newest);
         upHeap(heap.size() - 1);
     }
+}
+
+public List<Entry<K, V>> heapSort(List<Entry<K, V>> entries) {
+    HeapPriorityQueue<K, V> pq = new HeapPriorityQueue<>(entries);
+    List<Entry<K, V>> sorted = new ArrayList<>();
+    while (!pq.isEmpty()) {
+        sorted.add(pq.removeMin());
+    }
+    return sorted;
 }
