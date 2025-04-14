@@ -2,10 +2,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class MergeSort<K, V> {
+public class MergeSort<K extends Comparable<K>, V> {
     private Comparator<K> comp;
 
-    public MergeSort() { this(new DefaultComparator<>()); }
+    public MergeSort() { this.comp = new DefaultComparator<>(); }
 
     public MergeSort(Comparator<K> comp) { this.comp = comp; }
 
