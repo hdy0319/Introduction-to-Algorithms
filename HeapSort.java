@@ -2,84 +2,41 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
-    protected ArrayList<Entry<K, V>> heap = new ArrayList<>();
-    public HeapPriorityQueue() { super(); }
-    public HeapPriorityQueue(Comparator<K> comp) { super(comp); }
-    public HeapPriorityQueue(List<Entry<K,V>> entries) {
-        super();
-        heap.addAll(entries);
-        for (int j = parent(heap.size() - 1); j >= 0; j--)
-            downHeap(j);
+public class HeapSort<K extends Comparable<K>, V> {
+    private Comparator<K> comp;
+
+    public HeapSort() { this.comp = new DefaultComparator<>(); }
+    public HeapSort(Comparator<K> comp) { this.comp = comp; }
+
+    private int compare(Entry<K, V> a, Entry<K, V> b) { return comp.compare(a.getKey(), b.getKey()); }
+
+    public List<Entry<K, V>> sort(List<Entry<K, V>> list) {
+        List<Entry<K, V>> heap = new ArrayList<>(list);
+        int n = heap.size();
+        for (int i = parent(n - 1); i >= 0; i--) downHeap(heap, i, n);
+        List<Entry<K, V>> sorted = new ArrayList<>();
+        for (int i = n - 1; i >= 0; i--) {
+            sorted.add(heap.get(0));
+            swap(heap, 0, i);
+            downHeap(heap, 0, i);
+        }
+        return sorted;
     }
 
-    protected int parent(int j) { return (j - 1) / 2; }
-    protected int left(int j) { return 2 * j + 1; }
-    protected int right(int j) { return 2 * j + 2; }
-
-    protected boolean hasLeft(int j) { return left(j) < heap.size(); }
-    protected boolean hasRight(int j) { return right(j) < heap.size(); }
-    protected boolean hasParent(int j) { return j > 0; }
-
-    protected void swap(int i, int j) {
-        Entry<K, V> temp = heap.get(i);
-        heap.set(i, heap.get(j));
-        heap.set(j, temp);
-    }
-
-    protected void upHeap(int j) {
-        while (j > 0) {
-            int parent = parent(j);
-            if (compare(heap.get(j), heap.get(parent)) >= 0) break;
-            swap(j, parent);
-            j = parent;
+    private void downHeap(List<Entry<K, V>> heap, int i, int size) {
+        while (left(i) < size) {
+            int child = left(i), right = right(i);
+            if (right < size && compare(heap.get(right), heap.get(child)) < 0) child = right;
+            if (compare(heap.get(child), heap.get(i)) >= 0) break;
+            swap(heap, i, child); i = child;
         }
     }
 
-    protected void downHeap(int j) {
-        while (hasLeft(j)) {
-            int left = left(j);
-            int smallChild = left;
-            if (hasRight(j)) {
-                int right = right(j);
-                if (compare(heap.get(left), heap.get(right)) > 0)
-                    smallChild = right;
-            }
-            if (compare(heap.get(smallChild), heap.get(j)) >= 0) break;
-            swap(j, smallChild);
-            j = smallChild;
-        }
+    private void swap(List<Entry<K, V>> heap, int i, int j) {
+        Entry<K, V> tmp = heap.get(i); heap.set(i, heap.get(j)); heap.set(j, tmp);
     }
 
-    public int size() { return heap.size(); }
-
-    public Entry<K, V> min() {
-        if (heap.isEmpty()) return null;
-        return heap.get(0);
-    }
-
-    public Entry<K, V> removeMin() {
-        if (heap.isEmpty()) return null;
-        Entry<K, V> answer = heap.get(0);
-        swap(0, heap.size() - 1);
-        heap.remove(heap.size() - 1);
-        downHeap(0);
-        return answer;
-    }
-
-    public void insert(K key, V value) throws IllegalArgumentException {
-        checkKey(key);
-        Entry<K, V> newest = new PQEntry<>(key, value);
-        heap.add(newest);
-        upHeap(heap.size() - 1);
-    }
-}
-
-public List<Entry<K, V>> heapSort(List<Entry<K, V>> entries) {
-    HeapPriorityQueue<K, V> pq = new HeapPriorityQueue<>(entries);
-    List<Entry<K, V>> sorted = new ArrayList<>();
-    while (!pq.isEmpty()) {
-        sorted.add(pq.removeMin());
-    }
-    return sorted;
+    private int parent(int i) { return (i - 1) / 2; }
+    private int left(int i) { return 2 * i + 1; }
+    private int right(int i) { return 2 * i + 2; }
 }
