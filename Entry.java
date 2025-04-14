@@ -17,3 +17,9 @@ public class PQEntry<K, V> implements Entry<K, V> {
     protected void setKey(K key) { this.key = key; }
     protected void setValue(V value) { this.value = value; }
 }
+
+public class DefaultComparator<K> implements Comparator<Entry<K, ?>> {
+    public int compare(Entry<K, ?> a, Entry<K, ?> b) {
+        return ((Comparable<K>) a.getKey()).compareTo(b.getKey());
+    }
+}
