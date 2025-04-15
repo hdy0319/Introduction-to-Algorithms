@@ -55,3 +55,22 @@ Run 10: 11.104 ms / 8.847 MB
 Average : 11.925 ms / 8.908 MB
 
 Stability Check: Passed
+
+
+Loaded input size: 1000000
+Test Completed
+
+Run  1: 246.642 ms / 157.276 MB
+Run  2: 238.182 ms / 157.817 MB
+Run  3: 223.548 ms / 162.444 MB
+Run  4: 247.228 ms / 162.627 MB
+Run  5: 244.911 ms / 161.318 MB
+Run  6: 204.511 ms / 161.131 MB
+Run  7: 238.582 ms / 162.253 MB
+Run  8: 248.504 ms / 161.879 MB
+Run  9: 243.844 ms / 160.440 MB
+Run 10: 258.628 ms / 160.440 MB
+
+Average : 239.458 ms / 160.763 MB
+
+Stability Check: Passed
