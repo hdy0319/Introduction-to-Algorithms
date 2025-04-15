@@ -1,0 +1,76 @@
+
+
+Loaded input size: 1000
+Test Completed
+
+Run  1: 0.841 ms / 0.960 MB
+Run  2: 0.764 ms / 0.600 MB
+Run  3: 0.477 ms / 0.524 MB
+Run  4: 0.454 ms / 0.549 MB
+Run  5: 0.330 ms / 0.535 MB
+Run  6: 0.319 ms / 0.540 MB
+Run  7: 0.306 ms / 0.544 MB
+Run  8: 0.325 ms / 0.548 MB
+Run  9: 0.428 ms / 0.554 MB
+Run 10: 0.318 ms / 0.554 MB
+
+Average : 0.456 ms / 0.591 MB
+
+Stability Check: Passed
+
+
+Loaded input size: 10000
+Test Completed
+
+Run  1: 2.656 ms / 5.921 MB
+Run  2: 5.464 ms / 1.176 MB
+Run  3: 3.538 ms / 6.086 MB
+Run  4: 2.617 ms / 2.727 MB
+Run  5: 3.345 ms / 1.218 MB
+Run  6: 11.945 ms / 6.000 MB
+Run  7: 13.799 ms / 1.220 MB
+Run  8: 5.317 ms / 2.814 MB
+Run  9: 2.137 ms / 6.000 MB
+Run 10: 2.238 ms / 2.757 MB
+
+Average : 5.305 ms / 3.592 MB
+
+Stability Check: Failed
+
+
+Loaded input size: 100000
+Test Completed
+
+Run  1: 29.776 ms / 49.072 MB
+Run  2: 24.287 ms / 11.558 MB
+Run  3: 21.990 ms / 13.263 MB
+Run  4: 21.271 ms / 13.263 MB
+Run  5: 23.909 ms / 13.263 MB
+Run  6: 21.272 ms / 13.263 MB
+Run  7: 21.113 ms / 13.263 MB
+Run  8: 21.031 ms / 13.263 MB
+Run  9: 20.645 ms / 13.263 MB
+Run 10: 23.881 ms / 13.263 MB
+
+Average : 22.918 ms / 16.673 MB
+
+Stability Check: Failed
+
+
+Loaded input size: 1000000
+Test Completed
+
+Run  1: 228.056 ms / 163.536 MB
+Run  2: 177.596 ms / 225.553 MB
+Run  3: 203.133 ms / 251.998 MB
+Run  4: 190.698 ms / 178.121 MB
+Run  5: 193.238 ms / 249.157 MB
+Run  6: 188.523 ms / 167.776 MB
+Run  7: 191.786 ms / 253.966 MB
+Run  8: 199.794 ms / 285.966 MB
+Run  9: 195.154 ms / 243.966 MB
+Run 10: 196.790 ms / 177.263 MB
+
+Average : 196.477 ms / 219.730 MB
+
+Stability Check: Failed
